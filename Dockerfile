@@ -1,15 +1,15 @@
 FROM alpine:3.9.5
 
-RUN apk add --no-cache curl
+RUN apk add --no-cache python curl
 
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+RUN unzip awscli-bundle.zip
+RUN ./awscli-bundle/install -b ~/bin/aws
 
-RUN unzip awscliv2.zip
-
-RUN ./aws/install
+RUN export PATH=~/bin:$PATH
 
 # Show AWS CLI version
 RUN aws --version
 
 # Clean up
-RUN rm -f awscliv2.zip
+RUN rm -rf awscli-bundle awscli-bundle.zip
