@@ -6,7 +6,7 @@ RUN apk --update --no-cache add \
     python3 \
     python3-dev \
     zip \
-    && pip3 install --no-cache-dir --upgrade pip awscli==1.18.13 aws-sam-cli==0.43.0 \
+    && pip3 install --no-cache-dir --upgrade pip urllib3==1.25.4 awscli==1.19.84 aws-sam-cli==1.23.0 \
     && apk del \
     gcc \
     musl-dev \
